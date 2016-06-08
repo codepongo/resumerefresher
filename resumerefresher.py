@@ -100,6 +100,7 @@ def zhaopin(user, password):
     rep = json.loads(opener.open(req).read())
     if not rep['RequestSusess']:
         print rep
+        print rep['StatusDescription']
         return False
 
     req = urllib2.Request('http://m.zhaopin.com/resume/refreshresume', 'resumeId=%s&language=1'%resume['zhaopin'], headers={"User-Agent":user_agent})
@@ -116,6 +117,6 @@ def zhaopin(user, password):
     return True
 
 if __name__ == '__main__':
-    print 'refresh the resume in lipin.com:', liepin(user['liepin'], password['liepin'])
+    print 'refresh the resume in liepin.com:', liepin(user['liepin'], password['liepin'])
     print 'refresh the resume in zhaopin.com:', zhaopin(user['zhaopin'], password['zhaopin'])
     print 'refresh the resume in 51job.com:', fiftyonejob(user['51job'], password['51job'])
